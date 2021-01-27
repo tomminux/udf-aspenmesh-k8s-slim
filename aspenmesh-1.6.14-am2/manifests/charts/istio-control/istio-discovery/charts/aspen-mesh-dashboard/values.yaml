@@ -1,6 +1,6 @@
 image: # Override with appropriate image and tag.
 
-replicaCount: 2
+replicaCount: 1
 
 resources:
   requests:

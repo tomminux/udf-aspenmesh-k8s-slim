@@ -3,8 +3,8 @@
 ## Discovery Settings
 pilot:
   autoscaleEnabled: true
-  autoscaleMin: 2
-  autoscaleMax: 5
+  autoscaleMin: 1
+  autoscaleMax: 3
   replicaCount: 1
 
   rollingMaxSurge: 100%
@@ -160,7 +160,7 @@ sidecarInjectorWebhook:
     enabled: false
     autoInject: true
 
-  replicaCount: 2
+  replicaCount: 1
 
   podAntiAffinityLabelSelector:
   - key: app
@@ -797,7 +797,7 @@ aspen-mesh-controlplane:
   imagePullSecrets:
   - aspenmesh-kubernetes-pull-secret
 
-  replicaCount: 2
+  replicaCount: 1
 
   clusterId: demo
 
@@ -839,7 +839,7 @@ aspen-mesh-controlplane:
 aspen-mesh-dashboard:
   enabled: true
   image: dashboard-1.6.14-am2
-  replicaCount: 2
+  replicaCount: 1
 
 aspen-mesh-secure-ingress:
   enabled: true

@@ -30,7 +30,7 @@ persistence:
   ##
   # storageClass: "-"
   accessMode: ReadWriteOnce
-  size: 10Gi
+  size: 2Gi
 
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
@@ -53,8 +53,8 @@ resources:
 config:
   cluster_domain: cluster.local
   cluster_name: cassandra
-  cluster_size: 3
-  seed_size: 2
+  cluster_size: 1
+  seed_size: 1
   num_tokens: 256
   # If you want Cassandra to use this datacenter and rack name,
   # you need to set endpoint_snitch to GossipingPropertyFileSnitch.

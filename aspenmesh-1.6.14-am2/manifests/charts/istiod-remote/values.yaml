@@ -573,7 +573,7 @@ sidecarInjectorWebhook:
     enabled: false
     autoInject: true
 
-  replicaCount: 2
+  replicaCount: 1
 
   podAntiAffinityLabelSelector:
   - key: app

@@ -31,8 +31,8 @@ gateways:
     rollingMaxSurge: 100%
     rollingMaxUnavailable: 25%
     autoscaleEnabled: true
-    autoscaleMin: 2
-    autoscaleMax: 5
+    autoscaleMin: 1
+    autoscaleMax: 3
 
     cpu:
       targetAverageUtilization: 80

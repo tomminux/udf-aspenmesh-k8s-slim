@@ -70,7 +70,7 @@ server:
   
     ## metrics-collector data Persistent Volume size
     ##
-    size: 10Gi
+    size: 2Gi
   
     ## metrics-collector data Persistent Volume Storage Class
     ## If defined, storageClassName: <storageClass>

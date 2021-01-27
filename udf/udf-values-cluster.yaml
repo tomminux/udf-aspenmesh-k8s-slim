@@ -16,7 +16,7 @@ aspen-mesh-controlplane:
   
 aspen-mesh-secure-ingress:
   # enabled by default, which is highly recommended.
-  enabled: true
+  enabled: false
   # Email to use for Let's Encrypt registration (used for certificate expiry notices)
   # Leave blank ("") if you wish to manage your own TLS certificates.
   lets-encrypt-email: ""
@@ -25,11 +25,11 @@ aspen-mesh-secure-ingress:
   
 gateways:
   istio-ingressgateway:
-    enabled: true
+    enabled: false
     type: ClusterIP
 
   istio-egressgateway:
-    enabled: true
+    enabled: false
     env:
       # Needed to route traffic via egress gateway if desired.
       ISTIO_META_REQUESTED_NETWORK_VIEW: "external"

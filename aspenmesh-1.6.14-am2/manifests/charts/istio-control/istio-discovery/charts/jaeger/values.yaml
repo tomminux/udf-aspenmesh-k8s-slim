@@ -34,14 +34,14 @@ storage:
 cassandra:
   persistence:
     enabled: true
-    size: 10Gi
+    size: 2Gi
   config:
     cluster_name: jaeger
     seed_size: 1
     dc_name: dc1
     rack_name: rack1
     endpoint_snitch: GossipingPropertyFileSnitch
-  cluster_size: 3
+  cluster_size: 1
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -103,8 +103,8 @@ ingester:
   replicaCount: 1
   autoscaling:
     enabled: false
-    minReplicas: 2
-    maxReplicas: 10
+    minReplicas: 1
+    maxReplicas: 5
     # targetCPUUtilizationPercentage: 80
     # targetMemoryUtilizationPercentage: 80
   service:
@@ -199,8 +199,8 @@ collector:
   replicaCount: 1
   autoscaling:
     enabled: false
-    minReplicas: 2
-    maxReplicas: 10
+    minReplicas: 1
+    maxReplicas: 5
     # targetCPUUtilizationPercentage: 80
     # targetMemoryUtilizationPercentage: 80
   service:

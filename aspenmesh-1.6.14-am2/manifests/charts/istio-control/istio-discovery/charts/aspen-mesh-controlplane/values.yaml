@@ -2,7 +2,7 @@ image: # Override with appropriate image and tag.
 
 modelruntimeImage: # Override with appropriate image and tag.
 
-replicaCount: 2
+replicaCount: 1
 
 clusterId: default
 
