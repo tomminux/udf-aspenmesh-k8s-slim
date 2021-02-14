@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ $gateway.name | default "istio-ingressgateway" }}
+  name: {{ $gateway.name443 | default "istio-ingressgateway" }}
   namespace: {{ .Release.Namespace }}
   annotations:
     {{- range $key, $val := $gateway.serviceAnnotations }}
@@ -11,7 +11,7 @@ metadata:
     {{- end }}
   labels:
 {{ $gateway.labels | toYaml | indent 4 }}
-#{{ $gateway.cisLabels | toYaml | indent 4 }}
+{{ $gateway.cisLabels443 | toYaml | indent 4 }}
     release: {{ .Release.Name }}
 spec:
 {{- if $gateway.loadBalancerIP }}
@@ -29,7 +29,7 @@ spec:
 {{ $gateway.labels | toYaml | indent 4 }}
   ports:
 
-    {{- range $key, $val := $gateway.ports }}
+    {{- range $key, $val := $gateway.port443 }}
     -
       {{- range $pkey, $pval := $val }}
       {{ $pkey}}: {{ $pval }}
