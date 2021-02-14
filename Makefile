@@ -12,7 +12,7 @@ AM_NAMESPACE=istio-system
 AM_VALUES=./udf/udf-values-cluster.yaml
 CHART_DIR=./aspenmesh-1.6.14-am2/manifests/charts
 
-namespace-preparation: 
+namespace-preparation: ## Prepare the istio-system namespace with default StorageClass
     kubectl apply -f ~/k8s-manifests/istio-system/0.namespace-preparation/0.namespace.yaml
     kubectl apply -f ~/k8s-manifests/istio-system/0.namespace-preparation/1.storageClass.yaml
     kubectl apply -f ~/k8s-manifests/istio-system/0.namespace-preparation/2.pvc.yaml
