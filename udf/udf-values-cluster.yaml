@@ -1,6 +1,6 @@
 aspen-mesh-controlplane:
   # The name of the cluster where Aspen Mesh is being installed.
-  clusterId: k8s-cluster
+  clusterId: udf-k8s
 
   userAuth:
     # type can be set to `jwt` or `none`. JWT authentication is highly recommended.
@@ -25,7 +25,7 @@ aspen-mesh-secure-ingress:
   
 gateways:
   istio-ingressgateway:
-    enabled: false
+    enabled: true
     type: ClusterIP
 
   istio-egressgateway:
