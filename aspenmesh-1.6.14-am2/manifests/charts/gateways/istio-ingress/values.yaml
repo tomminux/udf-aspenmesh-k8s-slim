@@ -4,6 +4,8 @@
 gateways:
   istio-ingressgateway:
     name: istio-ingressgateway
+    name80: istio-ingressgateway-80
+    name443: istio-ingressgateway-443
     labels:
       app: istio-ingressgateway
       istio: ingressgateway
