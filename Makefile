@@ -12,18 +12,14 @@ AM_NAMESPACE=istio-system
 AM_VALUES=./udf/udf-values-cluster.yaml
 CHART_DIR=./aspenmesh-1.6.14-am2/manifests/charts
 
-helm-install: ## Install helm 3
-	sudo snap install helm --classic
-
-local-storage: ## Install Rancher local storage provisioning
-	kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
-	kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+local-storage: ## make nfs-provisioning storageClass the default one
+	kubectl patch storageclass infra-server-nfs-server-istio -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
 install-am: ## Install aspen mesh in k8s cluster
 	kubectl create ns ${AM_NAMESPACE}
 	helm install istio-base ${CHART_DIR}/base --namespace ${AM_NAMESPACE}
 	helm install istiod ${CHART_DIR}/istio-control/istio-discovery --namespace ${AM_NAMESPACE} --values ${AM_VALUES}
-	# helm install istio-ingress ${CHART_DIR}/gateways/istio-ingress --namespace ${AM_NAMESPACE} --values ${AM_VALUES}
+	helm install istio-ingress ${CHART_DIR}/gateways/istio-ingress --namespace ${AM_NAMESPACE} --values ${AM_VALUES}
 	# helm install istio-egress ${CHART_DIR}/gateways/istio-egress --namespace ${AM_NAMESPACE} --values ${AM_VALUES}
 	helm install istio-telemetry ${CHART_DIR}/istio-telemetry/grafana --namespace ${AM_NAMESPACE} --values ${AM_VALUES}
 
@@ -43,5 +39,5 @@ uninstall-am: ## Uninstall aspen mesh in k8s cluster
 	kubectl delete ns ${AM_NAMESPACE} || true
 
 
-post-install: ## Extra installations after standard installation
-	kubectl apply -f ./udf/post-install
+#post-install: ## Extra installations after standard installation
+#	kubectl apply -f ./udf/post-install
