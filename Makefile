@@ -12,15 +12,16 @@ AM_NAMESPACE=istio-system
 AM_VALUES=./udf/udf-values-cluster.yaml
 CHART_DIR=./aspenmesh-1.6.14-am2/manifests/charts
 
-local-storage: ## make nfs-provisioning storageClass the default one
+namespace-preparation: 
+    kubectl apply -f ~/k8s-manifests/istio-system/0.namespace-preparation/0.namespace.yaml
+    kubectl apply -f ~/k8s-manifests/istio-system/0.namespace-preparation/1.storageClass.yaml
+    kubectl apply -f ~/k8s-manifests/istio-system/0.namespace-preparation/2.pvc.yaml
 	kubectl patch storageclass infra-server-nfs-server-istio -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
 install-am: ## Install aspen mesh in k8s cluster
-	kubectl create ns ${AM_NAMESPACE}
 	helm install istio-base ${CHART_DIR}/base --namespace ${AM_NAMESPACE}
 	helm install istiod ${CHART_DIR}/istio-control/istio-discovery --namespace ${AM_NAMESPACE} --values ${AM_VALUES}
 	helm install istio-ingress ${CHART_DIR}/gateways/istio-ingress --namespace ${AM_NAMESPACE} --values ${AM_VALUES}
-	# helm install istio-egress ${CHART_DIR}/gateways/istio-egress --namespace ${AM_NAMESPACE} --values ${AM_VALUES}
 	helm install istio-telemetry ${CHART_DIR}/istio-telemetry/grafana --namespace ${AM_NAMESPACE} --values ${AM_VALUES}
 
 upgrade-am: ## Upgrade aspen mesh in k8s cluster
