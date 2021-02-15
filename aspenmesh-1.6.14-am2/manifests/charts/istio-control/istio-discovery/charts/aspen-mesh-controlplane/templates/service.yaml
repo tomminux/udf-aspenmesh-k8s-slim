@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Release.Namespace }}
   labels:
     app: aspen-mesh-controlplane
-{{ $cisLables.labels | toYaml | indent 4 }}
+{{ .Values.cisLabels.labels | toYaml | indent 4 }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     heritage: {{ .Release.Service }}
     release: {{ .Release.Name }}
