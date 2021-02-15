@@ -40,5 +40,5 @@ uninstall-am: ## Uninstall aspen mesh in k8s cluster
 	kubectl delete ns ${AM_NAMESPACE} || true
 
 
-#post-install: ## Extra installations after standard installation
-#	kubectl apply -f ./udf/post-install
+post-install: ## Extra installations after standard installation
+	kubectl apply -f /home/ubuntu/k8s-manifests/istio-system/0.namespace-preparation/9.bigip-ctlr-configMap.yaml
