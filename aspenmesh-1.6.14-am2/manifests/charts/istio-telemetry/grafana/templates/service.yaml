@@ -1,4 +1,3 @@
-{{ $grafana := index .Values "grafana" }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -11,7 +10,9 @@ metadata:
   labels:
     app: grafana
     release: {{ .Release.Name }}
-    {{ $grafana.serviceLabels | toYaml | indent 4 }}
+    cis.f5.com/as3-app: am-grafana
+    cis.f5.com/as3-tenant: istio-system
+    cis.f5.com/as3-pool: am-grafana-pool-80
 spec:
   type: {{ .Values.grafana.service.type }}
   ports:
