@@ -12,7 +12,7 @@ metadata:
     release: {{ .Release.Name }}
     cis.f5.com/as3-app: am-grafana
     cis.f5.com/as3-tenant: istio-system
-    cis.f5.com/as3-pool: am-grafana-pool-80
+    cis.f5.com/as3-pool: am-grafana-pool-3000
 spec:
   type: {{ .Values.grafana.service.type }}
   ports:
